@@ -1,6 +1,5 @@
 import * as ec2 from '@aws-cdk/aws-ec2';
 import * as eks from '@aws-cdk/aws-eks';
-import * as iam from '@aws-cdk/aws-iam';
 import { App, Construct, Stack, StackProps, CfnOutput, Tags } from '@aws-cdk/core';
 import * as cdk8s from 'cdk8s';
 import { VersionsLists, AwsLoadBalancePolicy } from 'cdk8s-aws-load-balancer-controller';
@@ -56,7 +55,6 @@ export class MyStack extends Stack {
     });
     const addCdk8sChart = eksCluster.addCdk8sChart('my-chart', myChart);
     addCdk8sChart.node.addDependency(sa);
-    eksCluster.awsAuth.addUserMapping(iam.User.fromUserName(this, 'Neil', 'neilguan'), { username: 'neilguan', groups: ['system:masters'] });
 
     new CfnOutput(this, 'adminRoleName', {
       value: eksCluster.adminRole.roleName,
