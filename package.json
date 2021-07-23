@@ -55,8 +55,8 @@
     "@aws-cdk/aws-iam": "^1.114.0",
     "@aws-cdk/core": "^1.114.0",
     "cdk8s": "^0.33.0",
-    "cdk8s-aws-load-balancer-controller": "2.3.4",
-    "constructs": "^3.3.100"
+    "cdk8s-aws-load-balancer-controller": "2.3.5",
+    "constructs": "^3.3.101"
   },
   "bundledDependencies": [],
   "license": "Apache-2.0",
