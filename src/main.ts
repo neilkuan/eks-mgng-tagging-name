@@ -30,16 +30,25 @@ export class MyStack extends Stack {
     // Use TagSpecifications in LaunchTemplate give managed Node group instance name.
     Tags.of(lt).add('Name', 'MGCustomNG-T3Medium-SPOT');
     // EKS managed Node group.
-    eksCluster.addNodegroupCapacity('MGNodegroupLTCustom', {
+    const eksmgSG = new ec2.SecurityGroup(this, 'EKSManagementSG', {
+      securityGroupName: 'EKSManagementSG',
+      vpc,
+    });
+    Tags.of(eksmgSG).add(`kubernetes.io/cluster/${eksCluster.clusterName}`, 'owned');
+    new eks.Nodegroup(this, 'MGNodegroupLTCustom', {
       nodegroupName: 'MGNodeGroupCustomSPOT',
       capacityType: eks.CapacityType.SPOT,
       instanceTypes: [new ec2.InstanceType('t3.medium')],
+      cluster: eksCluster,
       desiredSize: 1,
       launchTemplateSpec: {
         id: lt.launchTemplateId!,
         version: lt.versionNumber,
       },
     });
+
+    eksCluster.connections.allowFrom(eksmgSG, ec2.Port.allTraffic(), 'Allow MG Node SG to access EKS Cluster');
+    eksmgSG.connections.allowFrom(eksCluster.connections, ec2.Port.allTraffic(), 'Allow EKS Control Plane to to access Node');
 
     // Use Default EKS managed Node group, do not have instane Name tag.
     eksCluster.addNodegroupCapacity('MGNodegroupDefault', {
