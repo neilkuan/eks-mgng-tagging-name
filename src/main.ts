@@ -21,6 +21,10 @@ export class MyStack extends Stack {
     userData.addCommands('Content-Type: multipart/mixed; boundary="//"', '', '--//');
     const lt = new ec2.LaunchTemplate(this, 'LaunchTemplate', {
       userData,
+      blockDevices: [{
+        deviceName: '/dev/xvda',
+        volume: ec2.BlockDeviceVolume.ebs(30),
+      }],
     });
 
     // Use TagSpecifications in LaunchTemplate give managed Node group instance name.
