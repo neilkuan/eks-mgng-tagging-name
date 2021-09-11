@@ -12,7 +12,7 @@ test('Snapshot', () => {
     },
     NodeRole: {
       'Fn::GetAtt': [
-        'mgNamingEksNodegroupMGNodegroupLTCustomNodeGroupRole39711C53',
+        'MGNodegroupLTCustomNodeGroupRoleED7ED663',
         'Arn',
       ],
     },
@@ -49,6 +49,14 @@ test('Snapshot', () => {
   });
   expect(stack).toHaveResource('AWS::EC2::LaunchTemplate', {
     LaunchTemplateData: {
+      BlockDeviceMappings: [
+        {
+          DeviceName: '/dev/xvda',
+          Ebs: {
+            VolumeSize: 30,
+          },
+        },
+      ],
       TagSpecifications: [
         {
           ResourceType: 'instance',
