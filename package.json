@@ -6,23 +6,24 @@
     "url": "https://github.com/neilkuan/eks-mgng-tagging-name.git"
   },
   "scripts": {
+    "build": "npx projen build",
     "clobber": "npx projen clobber",
     "compile": "npx projen compile",
-    "test:compile": "npx projen test:compile",
-    "test": "npx projen test",
-    "build": "npx projen build",
-    "test:watch": "npx projen test:watch",
-    "test:update": "npx projen test:update",
-    "upgrade-dependencies": "npx projen upgrade-dependencies",
-    "upgrade-projen": "npx projen upgrade-projen",
     "default": "npx projen default",
-    "eslint": "npx projen eslint",
-    "synth": "npx projen synth",
     "deploy": "npx projen deploy",
     "destroy": "npx projen destroy",
     "diff": "npx projen diff",
-    "projen": "npx projen",
-    "start": "npx projen start"
+    "eslint": "npx projen eslint",
+    "package": "npx projen package",
+    "post-compile": "npx projen post-compile",
+    "pre-compile": "npx projen pre-compile",
+    "synth": "npx projen synth",
+    "test": "npx projen test",
+    "test:update": "npx projen test:update",
+    "test:watch": "npx projen test:watch",
+    "upgrade": "npx projen upgrade",
+    "upgrade-projen": "npx projen upgrade-projen",
+    "projen": "npx projen"
   },
   "author": {
     "name": "Neil Kuan",
@@ -31,7 +32,7 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
-    "@types/node": "^10.17.0",
+    "@types/node": "^14.17.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "aws-cdk": "^1.114.0",
@@ -39,11 +40,11 @@
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.3",
-    "jest": "^27.3.1",
+    "jest": "^27.4.2",
     "jest-junit": "^12",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^11",
-    "projen": "^0.27.1",
+    "projen": "0.35.0",
     "ts-jest": "^27.0.7",
     "ts-node": "^9",
     "typescript": "^4.5.2"
@@ -96,7 +97,7 @@
     "preset": "ts-jest",
     "globals": {
       "ts-jest": {
-        "tsconfig": "tsconfig.jest.json"
+        "tsconfig": "tsconfig.dev.json"
       }
     }
   },
