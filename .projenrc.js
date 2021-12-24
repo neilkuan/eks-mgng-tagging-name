@@ -13,7 +13,7 @@ const project = new AwsCdkTypeScriptApp({
     '@aws-cdk/aws-iam',
     '@aws-cdk/core',
   ],
-  depsUpgrade: {
+  depsUpgradeOptions: {
     workflowOptions: {
       labels: ['auto-approve'],
       secret: 'AUTOMATION_GITHUB_TOKEN',
