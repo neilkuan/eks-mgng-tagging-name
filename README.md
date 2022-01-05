@@ -1,3 +1,9 @@
+# Note!!!
+Before you run deploy, please install helm in your computer and run
+
+- `helm repo add eks https://aws.github.io/eks-charts`
+- `helm repo`
+
 # Tagging Name Console screen shot.
 ![](./have-name-vs-not-have-name.png)
 
