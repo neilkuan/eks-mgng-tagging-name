@@ -1,5 +1,5 @@
-const { AwsCdkTypeScriptApp } = require('projen');
-const project = new AwsCdkTypeScriptApp({
+const { awscdk } = require('projen');
+const project = new awscdk.AwsCdkTypeScriptApp({
   cdkVersion: '1.114.0',
   defaultReleaseBranch: 'main',
   name: 'eks-mgng-tagging-name',
@@ -16,7 +16,6 @@ const project = new AwsCdkTypeScriptApp({
   depsUpgradeOptions: {
     workflowOptions: {
       labels: ['auto-approve'],
-      secret: 'AUTOMATION_GITHUB_TOKEN',
     },
   },
   autoApproveOptions: {
