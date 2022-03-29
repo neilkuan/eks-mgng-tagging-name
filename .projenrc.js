@@ -14,6 +14,7 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     '@aws-cdk/core',
   ],
   depsUpgradeOptions: {
+    ignoreProjen: false,
     workflowOptions: {
       labels: ['auto-approve'],
     },
