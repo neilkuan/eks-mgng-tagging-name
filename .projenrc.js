@@ -28,6 +28,10 @@ const project = new awscdk.AwsCdkTypeScriptApp({
     'constructs',
     'cdk8s',
   ],
+  typescriptVersion: '4.6',
+  devDeps: [
+    '@types/prettier@2.6.0',
+  ],
   gitignore: ['cdk.out', 'images', 'cdk.context.json'],
   workflowBootstrapSteps: [
     {
